@@ -10,6 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import static org.springframework.http.MediaType.APPLICATION_NDJSON_VALUE;
+import static org.springframework.http.MediaType.TEXT_EVENT_STREAM_VALUE;
 
 @RestController
 @RequestMapping("math")
@@ -28,7 +29,7 @@ public class MathController {
         return mathService.findSquareV2(input);
     }
 
-    @GetMapping(value = "table/{input}", produces = APPLICATION_NDJSON_VALUE)
+    @GetMapping(value = "table/{input}", produces = TEXT_EVENT_STREAM_VALUE)
     public Flux<Response> multiplicationTable(@PathVariable Integer input) {
         return mathService.multiplicationTable(input);
     }
